@@ -1,15 +1,16 @@
-import Join from "./Join";
-import Login from "./Login";
 import { useContext } from 'react';
-import { UserInfoContext } from "./UserContext";
+import { UserInfoContext, UserToggleContext } from "./UserContext";
+;
 
 function Main(){
     const userDB = useContext(UserInfoContext);
+    const {loginToggle,showingId} = useContext(UserToggleContext);
     return(
         <>
-        <Login/>
-        <Join/>
+            {loginToggle?<h1>Welcome {showingId}</h1>:
             <h1>Welcome Guest{Math.floor(Math.random()*8999+1000)}</h1>
+            }
+
         </>
     )
 }

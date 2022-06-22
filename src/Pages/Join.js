@@ -2,6 +2,18 @@
 import { useContext } from 'react';
 import { UserInfoContext } from './UserContext';
 import { useState } from 'react';
+import  styled  from 'styled-components';
+
+const JoinBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border: solid 2px darkcyan;
+  width: 30vw;
+  height: 45vh;
+  border-radius: 3px;
+`;
+
 
 function Join(){
     const {userDB,setUserDB}=useContext(UserInfoContext);
@@ -13,6 +25,7 @@ function Join(){
         if(checkId){alert("Same Id!!")}
         else if(newPw !== rePw){alert("Check password")}
         else{
+            alert("Complete join")
             setUserDB([
                 ...userDB,
                 {
@@ -25,10 +38,12 @@ function Join(){
     return(
         <>
         <h1>Join</h1>
+        <JoinBox>
         <input placeholder="ID" onChange={(e)=>{setNewId(e.target.value)}}/>
-        <input placeholder="Password" onChange={(e)=>{setNewPw(e.target.value)}}/>
-        <input placeholder="Repeat Password" onChange={(e)=>{setRePw(e.target.value)}}/>
+        <input type='password' placeholder="Password" onChange={(e)=>{setNewPw(e.target.value)}}/>
+        <input type='password' placeholder="Repeat Password" onChange={(e)=>{setRePw(e.target.value)}}/>
         <button onClick={CheckJoin}>Join</button>
+        </JoinBox>
         </>
     )
 }
